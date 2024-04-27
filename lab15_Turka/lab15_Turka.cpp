@@ -2,8 +2,29 @@
 
 using namespace std;
 
-int main() {
+void selectionSort(int arr[], int n) {
 
+    for (int i = 0; i < n - 1; ++i) {
+
+        int min_index = i;
+
+        for (int j = i + 1; j < n; ++j) {
+
+            if (arr[j] < arr[min_index]) {
+
+                min_index = j;
+            }
+        }
+
+        int temp = arr[i];
+
+        arr[i] = arr[min_index];
+        arr[min_index] = temp;
+    }
+}
+
+int main() {
+ 
     setlocale(LC_CTYPE, "ukr");
 
     int a[20] = { 4, 10, 2, 17, 8, 6, 11, 3, 14, 19, 12, 7, 9, 5, 1, 20, 13, 16, 18, 15 };
@@ -21,28 +42,18 @@ int main() {
         }
     }
 
-    for (int i = 0; i < b_size - 1; ++i) {
-
-        for (int j = 0; j < b_size - i - 1; ++j) {
-
-            if (b[j] > b[j + 1]) {
-
-                int temp = b[j];
-
-                b[j] = b[j + 1];
-                b[j + 1] = temp;
-            }
-        }
-    }
+    selectionSort(b, b_size);
 
     cout << "Вiдсортований масив b: ";
+
     for (int i = 0; i < b_size; ++i) {
 
         cout << b[i] << " ";
-    }
 
+    }
     cout << '\n';
 
     return 0;
 }
+
 
